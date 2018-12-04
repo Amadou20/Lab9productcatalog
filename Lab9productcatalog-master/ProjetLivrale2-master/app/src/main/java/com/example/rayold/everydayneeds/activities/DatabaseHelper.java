@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
 
-        super(context, "livrable3.db", null, 1);
+        super(context, "livrable4.db", null, 1);
 
     }
 
@@ -187,6 +187,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data ;
     }
 
+    public boolean fournisseurHasPersonalInformation(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from informationFournisseur where email=?", new String[]{email});
+        if (cursor.getCount() > 0)
+            return false;
+        else
+            return true;
+    }
+
     public boolean deleteService(String serviceName, String hourlyRate){
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result = false;
@@ -232,11 +241,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean serviceNameforfournisseur(String serviceName) {
+    public boolean serviceNameforfournisseur(String email,String serviceName) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("Select * from addServiceFournisseur where serviceFournisseur=?", new String[]{serviceName});
+        Cursor cursor = db.rawQuery("Select * from addServiceFournisseur where serviceFournisseur=? and email=?", new String[]{email,serviceName});
 
         if (cursor.getCount() > 0)
 

@@ -118,8 +118,8 @@ public class AvailabilityFournisseur extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "information saved: Successfully", Toast.LENGTH_SHORT).show();
                     Intent j = new Intent(AvailabilityFournisseur.this, displayAvailability.class);
                     j.putExtra("DAY", s3);
-                    j.putExtra("HOUR1",s1);
-                    j.putExtra("HOUR2",s2);
+                    j.putExtra("HOUR2",s1);
+                    j.putExtra("HOUR1",s2);
                     startActivity(j);
 
                 }

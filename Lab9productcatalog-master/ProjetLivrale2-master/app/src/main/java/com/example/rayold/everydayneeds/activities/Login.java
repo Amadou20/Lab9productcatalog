@@ -56,9 +56,10 @@ public class Login extends AppCompatActivity {
                         Intent j = new Intent(Login.this, adminservice.class);
                         startActivity(j);
                     }else if(db.isFournisseur(email)==true){
+                        if(db.fournisseurHasPersonalInformation(email)){
                         Intent a = new Intent(Login.this, Fournisseur.class);
                         a.putExtra("EMAIL", user.getEmail());
-                        startActivity(a);
+                        startActivity(a);}
                     }else if(!(db.isAdministrator(email) && db.isFournisseur(email))){
                         Intent k = new Intent(Login.this, ProprietaireService.class);
                         startActivity(k);

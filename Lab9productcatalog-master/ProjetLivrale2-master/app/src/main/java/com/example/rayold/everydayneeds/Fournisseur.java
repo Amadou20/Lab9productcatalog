@@ -58,6 +58,7 @@ public class Fournisseur extends AppCompatActivity {
                     if (insert == true) {
                         Toast.makeText(getApplicationContext(), "information saved: Successfully", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(Fournisseur.this, fournisseurService.class);
+                        i.putExtra("EMAIL",getIntent().getStringExtra("EMAIL"));
                         startActivity(i);
                     } else {
                         Toast.makeText(getApplicationContext(), "information saved: Failing", Toast.LENGTH_SHORT).show();

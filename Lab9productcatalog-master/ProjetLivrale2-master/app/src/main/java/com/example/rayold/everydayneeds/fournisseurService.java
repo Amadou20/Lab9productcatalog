@@ -24,7 +24,7 @@ public class fournisseurService extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fournisseur_service);
-        final ListView listView = (ListView) findViewById(R.id.listview2);
+        final ListView listView = (ListView) findViewById(R.id.listview);
         db = new DatabaseHelper(this);
 
         ArrayList<String> theList = new ArrayList<>();
@@ -45,6 +45,7 @@ public class fournisseurService extends AppCompatActivity {
                 Intent j = new Intent (fournisseurService.this,addServiceProfil.class );
                 //Toast.makeText(getApplicationContext(), "service saved: successful ", Toast.LENGTH_SHORT).show();
                 j.putExtra("SERVICE" ,(String) listView.getItemAtPosition(position) );
+                j.putExtra("EMAIL",getIntent().getStringExtra("EMAIL"));
                 startActivity(j);
             }
         });

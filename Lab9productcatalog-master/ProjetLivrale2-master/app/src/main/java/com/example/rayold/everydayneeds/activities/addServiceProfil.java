@@ -25,7 +25,7 @@ public class addServiceProfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_service_profil);
-        final ListView listView = (ListView) findViewById(R.id.listview2);
+        final ListView listView = (ListView) findViewById(R.id.listview);
         db = new DatabaseHelper(this);
         serviceName = getIntent().getStringExtra("SERVICE");
         serviceNameView = findViewById((R.id.ServiceName));
@@ -50,10 +50,10 @@ public class addServiceProfil extends AppCompatActivity {
             public void onClick(View v) {
                 String s1 = serviceNameView.getText().toString();
 
-                if(db.serviceNameforfournisseur(s1)==true){
+                if(db.serviceNameforfournisseur(getIntent().getStringExtra("EMAIL"),s1)==true){
                     Toast.makeText(getApplicationContext(), "This service already exists", Toast.LENGTH_SHORT).show();
                 }
-                else if (db.serviceNameforfournisseur(s1)==false ){
+                else if (db.serviceNameforfournisseur(getIntent().getStringExtra("EMAIL"),s1)==false ){
                     boolean insert = db.insertServiceFournisseur(getIntent().getStringExtra("EMAIL"),s1);
                     if(insert==true){
                     Intent i = new Intent(addServiceProfil.this, AvailabilityFournisseur.class);

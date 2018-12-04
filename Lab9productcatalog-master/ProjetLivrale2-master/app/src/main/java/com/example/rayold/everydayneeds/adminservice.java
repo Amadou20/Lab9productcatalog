@@ -21,7 +21,7 @@ public class adminservice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fournisseur_service);
 
-        list = (ListView) findViewById(R.id.listview1) ;
+        list = (ListView) findViewById(R.id.listview) ;
         CustomListview customListview = new CustomListview(this , services , imgid) ;
         list.setAdapter(customListview);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

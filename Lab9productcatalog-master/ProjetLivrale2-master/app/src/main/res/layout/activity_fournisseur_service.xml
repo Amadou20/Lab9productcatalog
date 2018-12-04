@@ -9,7 +9,7 @@
     tools:context=".activities.Login">
 
     <ListView
-        android:id="@+id/listview2"
+        android:id="@+id/listview"
         android:layout_width="384dp"
         android:layout_height="515dp"
         android:layout_marginStart="8dp"

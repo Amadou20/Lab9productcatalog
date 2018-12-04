@@ -24,7 +24,7 @@ public class ProprietaireService extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proprietaire_service);
-        final ListView listView = (ListView) findViewById(R.id.dynamic);
+        final ListView listView = (ListView) findViewById(R.id.listview);
         db = new DatabaseHelper(this);
 
         ArrayList<String> theList = new ArrayList<>();
