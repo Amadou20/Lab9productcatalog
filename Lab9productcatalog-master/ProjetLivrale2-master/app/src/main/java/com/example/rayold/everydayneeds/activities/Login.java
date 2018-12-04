@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.example.rayold.everydayneeds.Fournisseur;
 import com.example.rayold.everydayneeds.R;
 import com.example.rayold.everydayneeds.admin;
-import com.example.rayold.everydayneeds.adminservice;
 import com.example.rayold.everydayneeds.fournisseurService;
 
 public class Login extends AppCompatActivity {
@@ -48,26 +47,31 @@ public class Login extends AppCompatActivity {
                 User user = db.findUser(email);
                 if (chkmailpass == true) {
                     Toast.makeText(getApplicationContext(),"Successful login", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(Login.this, ProprietaireService.class);
+                    Intent i = new Intent(Login.this, Activity_LoggedIn.class);
                     i.putExtra("EMAIL", email);
                     i.putExtra("NAME",user.getName());
                     i.putExtra("ROLE",user.getRole());
                     if(db.isAdministrator(email)==true){
-                        Intent j = new Intent(Login.this, adminservice.class);
+                        Intent j = new Intent(Login.this, admin.class);
                         startActivity(j);
                     }else if(db.isFournisseur(email)==true){
                         if(db.fournisseurHasPersonalInformation(email)){
-                        Intent a = new Intent(Login.this, Fournisseur.class);
-                        a.putExtra("EMAIL", user.getEmail());
-                        startActivity(a);}
-                    }else if(!(db.isAdministrator(email) && db.isFournisseur(email))){
-                        Intent k = new Intent(Login.this, ProprietaireService.class);
-                        startActivity(k);
+                            Intent a = new Intent(Login.this, Fournisseur.class);
+                            a.putExtra("EMAIL", user.getEmail());
+                            startActivity(a);
+                        }
+                        else{
+                            Intent a = new Intent(Login.this, fournisseurService.class);
+                            startActivity(a);
+                        }
+
+                    }else{
+                        startActivity(i);}
                 } else {
                     Toast.makeText(getApplicationContext(),"Wrong email or password", Toast.LENGTH_SHORT).show();
                 }
             }
-        }});
+        });
     }
 
 }

@@ -26,8 +26,8 @@ public class ProprietaireService extends AppCompatActivity {
         setContentView(R.layout.activity_displayfournisseurservice);
         //super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_displayfournisseurservice);
-
-        ListView listview = (ListView) findViewById(R.id.list) ;
+        final ListView listView = (ListView) findViewById(R.id.list);
+        //ListView listview = (ListView) findViewById(R.id.list) ;
         db = new DatabaseHelper(this);
         ArrayList<String> thelist = new ArrayList<String>() ;
         Cursor data = db.getListContents() ;
@@ -39,9 +39,21 @@ public class ProprietaireService extends AppCompatActivity {
             while(data.moveToNext()){
                 thelist.add(data.getString(1));
                 ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,thelist) ;
-                listview.setAdapter(listAdapter);
+                listView.setAdapter(listAdapter);
             }
         }
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                serviceName =(String) listView.getItemAtPosition(position);
+                Intent j = new Intent (ProprietaireService.this,proprietaireEdit.class );
+                //Toast.makeText(getApplicationContext(), "service saved: successful ", Toast.LENGTH_SHORT).show();
+                j.putExtra("SERVICE" ,(String) listView.getItemAtPosition(position) );
+                j.putExtra("EMAIL",getIntent().getStringExtra("EMAIL"));
+                startActivity(j);
+            }
+        });
         /*final ListView listView = (ListView) findViewById(R.id.listview);
         db = new DatabaseHelper(this);
 

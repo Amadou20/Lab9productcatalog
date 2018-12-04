@@ -28,10 +28,8 @@ public class AvailabilityFournisseur extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_availability_fournisseur);
-        buttonSaveDate = (Button) findViewById(R.id.buttonSaveDate);
-
         db = new DatabaseHelper(this);
-
+        buttonSaveDate = (Button) findViewById(R.id.buttonSaveDate);
         mySpinner = (Spinner) findViewById(R.id.spinner);
 
         final TextView chooseTimedebut = findViewById(R.id.etChooseTimeDebut);

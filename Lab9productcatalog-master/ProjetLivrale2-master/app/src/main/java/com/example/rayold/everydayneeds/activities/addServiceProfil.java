@@ -58,6 +58,7 @@ public class addServiceProfil extends AppCompatActivity {
                     if(insert==true){
                     Intent i = new Intent(addServiceProfil.this, AvailabilityFournisseur.class);
                     Toast.makeText(getApplicationContext(), "service saved: successful ", Toast.LENGTH_SHORT).show();
+                    i.putExtra("EMAIL",getIntent().getStringExtra("EMAIL"));
                     startActivity(i);}
                 }
                 else
