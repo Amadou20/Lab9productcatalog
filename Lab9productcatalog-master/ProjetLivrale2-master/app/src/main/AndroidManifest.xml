@@ -35,7 +35,8 @@
         <activity android:name=".activities.addServiceProfil" />
         <activity android:name=".activities.ProprietaireService" />
         <activity android:name=".activities.proprietaireEdit" />
-        <activity android:name=".activities.Displayfournisseurservice"></activity>
+        <activity android:name=".activities.Displayfournisseurservice" />
+        <activity android:name=".Displayadminservices"></activity>
     </application>
 
 </manifest>

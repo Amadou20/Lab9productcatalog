@@ -11,14 +11,18 @@ import android.widget.Toast;
 
 import com.example.rayold.everydayneeds.R;
 import com.example.rayold.everydayneeds.activities.DatabaseHelper;
+import com.example.rayold.everydayneeds.activities.Displayfournisseurservice;
 import com.example.rayold.everydayneeds.activities.Login;
 import com.example.rayold.everydayneeds.activities.Register;
+import com.example.rayold.everydayneeds.activities.addServiceProfil;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 
 public class admin extends AppCompatActivity {
     EditText hourlyRate;
     TextView service ;
-    Button edit,add,delete;
+    Button edit,add,delete , list;
     DatabaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,15 @@ public class admin extends AppCompatActivity {
         edit = (Button)findViewById(R.id.buttonEdit);
         add = (Button)findViewById(R.id.buttonAdd);
         delete = (Button)findViewById(R.id.buttonDelete);
+        list = (Button)findViewById(R.id.button) ;
+
+        list.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(admin.this , Displayadminservices.class);
+                startActivity(intent) ;
+            }
+        });
 
         add.setOnClickListener(new View.OnClickListener(){
             @Override
