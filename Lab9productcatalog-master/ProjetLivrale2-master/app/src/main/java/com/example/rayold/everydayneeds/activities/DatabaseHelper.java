@@ -26,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("Create table service(id integer  primary key,serviceName text, hourlyRate text)");
         db.execSQL("Create table informationFournisseur(email text primary key,companyName text, phoneNumber text, address text, generalDescription text,licence text)");
         db.execSQL("Create table addServiceFournisseur(email text primary key, serviceFournisseur text)");
+        db.execSQL("Create table available(email text primary key,day  text,hourStart text,hourEnd text)");
     }
 
 
@@ -38,6 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("drop table if exists service");
         db.execSQL("drop table if exists informationFournisseur");
         db.execSQL("drop table if exists addServiceFournisseur");
+        db.execSQL("drop table if exists available");
     }
 
     public boolean insertFournisseur(String company, String phone, String address, String description, String licence, String email) {

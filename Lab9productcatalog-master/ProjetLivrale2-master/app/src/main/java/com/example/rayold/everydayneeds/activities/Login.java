@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.rayold.everydayneeds.Fournisseur;
 import com.example.rayold.everydayneeds.R;
 import com.example.rayold.everydayneeds.admin;
+import com.example.rayold.everydayneeds.adminservice;
 import com.example.rayold.everydayneeds.fournisseurService;
 
 public class Login extends AppCompatActivity {
@@ -52,7 +53,7 @@ public class Login extends AppCompatActivity {
                     i.putExtra("NAME",user.getName());
                     i.putExtra("ROLE",user.getRole());
                     if(db.isAdministrator(email)==true){
-                        Intent j = new Intent(Login.this, admin.class);
+                        Intent j = new Intent(Login.this, adminservice.class);
                         startActivity(j);
                     }else if(db.isFournisseur(email)==true){
                         if(db.fournisseurHasPersonalInformation(email)){
