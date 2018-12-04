@@ -30,6 +30,8 @@ public class AvailabilityFournisseur extends AppCompatActivity {
         setContentView(R.layout.activity_availability_fournisseur);
         buttonSaveDate = (Button) findViewById(R.id.buttonSaveDate);
 
+        db = new DatabaseHelper(this);
+
         mySpinner = (Spinner) findViewById(R.id.spinner);
 
         final TextView chooseTimedebut = findViewById(R.id.etChooseTimeDebut);
@@ -115,14 +117,19 @@ public class AvailabilityFournisseur extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "information saved: Successfully", Toast.LENGTH_SHORT).show();
-                    Intent j = new Intent(AvailabilityFournisseur.this, displayAvailability.class);
-                    j.putExtra("DAY", s3);
-                    j.putExtra("HOUR2",s1);
-                    j.putExtra("HOUR1",s2);
-                    startActivity(j);
-
+                    Boolean inser = db.insertAvailable(getIntent().getStringExtra("EMAIL"),s1,s2,s3);
+                    if( inser==true){
+                        Toast.makeText(getApplicationContext(), "information saved: Successfully", Toast.LENGTH_SHORT).show();
+                        Intent j = new Intent(AvailabilityFournisseur.this, displayAvailability.class);
+                        j.putExtra("DAY", s3);
+                        j.putExtra("HOUR2",s1);
+                        j.putExtra("HOUR1",s2);
+                        startActivity(j);
+                    } else{
+                        Toast.makeText(getApplicationContext(),"information saved: failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
 
             }
 

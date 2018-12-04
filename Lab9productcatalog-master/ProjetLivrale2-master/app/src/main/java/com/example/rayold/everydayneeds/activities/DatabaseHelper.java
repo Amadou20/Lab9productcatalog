@@ -196,6 +196,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    public boolean insertAvailable(String email, String jour,String hourStart, String hourEnd) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("email", email);
+
+        contentValues.put("day", jour);
+
+        contentValues.put("hourStart", hourStart);
+
+        contentValues.put("hourEnd", hourEnd);
+
+        long ins = db.insert("available", null, contentValues);
+
+        if (ins == -1)
+
+            return false;
+
+        else
+
+            return true;
+
+    }
+
     public boolean deleteService(String serviceName, String hourlyRate){
         SQLiteDatabase db = this.getWritableDatabase();
         boolean result = false;
